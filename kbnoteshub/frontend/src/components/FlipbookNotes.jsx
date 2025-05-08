@@ -15,7 +15,7 @@ const FlipbookNotes = () => {
       try {
         setLoading(true);
         setError(null);
-        const res = await axios.get(`http://localhost:5000/api/notes/${filter}`);
+        const res = await axios.get(`https://ai-flipbook-notes-lib.onrender.com`);
         setNotes(res.data);
         setCurrentPage(0);
       } catch (error) {
