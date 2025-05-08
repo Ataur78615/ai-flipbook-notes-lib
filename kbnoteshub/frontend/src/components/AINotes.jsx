@@ -11,8 +11,8 @@ const AINotes = () => {
   const [success, setSuccess] = useState("");
 
   const handleGenerate = async () => {
-    if (!prompt.trim()) {
-      setError("⚠️ Please enter a topic");
+    if (!prompt.trim() || !title.trim()) {
+      setError("⚠️ Please enter both title and topic");
       return;
     }
 
@@ -21,16 +21,19 @@ const AINotes = () => {
     setSuccess("");
 
     try {
-      const geminiRes = await axios.post("https://ai-flipbook-notes-lib.onrender.com/api/generate", {
-        prompt,
-        isPublic: true,
-      });
+      const geminiRes = await axios.post(
+        "https://ai-flipbook-notes-lib.onrender.com/api/generate",
+        {
+          prompt,
+          isPublic: true,
+        }
+      );
 
       const content = geminiRes.data.content;
       setGeneratedNote(content);
 
       await axios.post("https://ai-flipbook-notes-lib.onrender.com/api/notes", {
-        title: prompt,
+        title,
         content,
         isPublic: true,
         author: "User",
