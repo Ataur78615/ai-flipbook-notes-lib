@@ -29,7 +29,7 @@ const AINotes = () => {
       const content = geminiRes.data.content;
       setGeneratedNote(content);
 
-      await axios.post("https://ai-flipbook-notes-lib.onrender.com", {
+      await axios.post("https://ai-flipbook-notes-lib.onrender.com/api/notes", {
         title: prompt,
         content,
         isPublic: true,
