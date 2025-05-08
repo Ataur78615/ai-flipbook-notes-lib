@@ -14,7 +14,7 @@ const Library = () => {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const res = await axios.get('https://ai-flipbook-notes-lib.onrender.com');
+        const res = await axios.get('https://ai-flipbook-notes-lib.onrender.com/api/notes/public');
         setNotes(res.data);
       } catch (err) {
         console.error("Failed to fetch notes:", err);
